@@ -1,3 +1,11 @@
+# Fork 
+
+The goal of this fork is to enable full support with Graphql based NestJS apps
+
+[] - Guards, Middleware
+[] - Hooks
+
+
 # NestJS Better Auth Integration
 
 A comprehensive NestJS integration library for [Better Auth](https://www.better-auth.com/), providing seamless authentication and authorization for your NestJS applications.
