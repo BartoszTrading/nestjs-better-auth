@@ -2,8 +2,8 @@
 
 The goal of this fork is to enable full support with Graphql based NestJS apps
 
-[] - Guards, Middleware
-[] - Hooks
+- [ ]  Guards, Middleware
+- [ ]  Hooks
 
 
 # NestJS Better Auth Integration
