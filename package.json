@@ -16,7 +16,6 @@
 		"lint": "biome lint",
 		"format": "biome format",
 		"check": "biome check",
-		"prepare": "bunup src/index.ts --format esm,cjs --dts"
 	},
 	"types": "dist/index.d.ts",
 	"exports": {
