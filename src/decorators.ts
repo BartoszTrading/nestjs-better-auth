@@ -2,6 +2,7 @@ import { SetMetadata, createParamDecorator } from "@nestjs/common";
 import type { CustomDecorator, ExecutionContext } from "@nestjs/common";
 import type { createAuthMiddleware } from "better-auth/api";
 import { AFTER_HOOK_KEY, BEFORE_HOOK_KEY, HOOK_KEY } from "./symbols.ts";
+import { getRequestObject } from "./utils.ts";
 
 /**
  * Marks a route or a controller as public, allowing unauthenticated access.
@@ -24,7 +25,7 @@ export const Optional = (): CustomDecorator<string> =>
  */
 export const Session: ReturnType<typeof createParamDecorator> =
 	createParamDecorator((_data: unknown, context: ExecutionContext): unknown => {
-		const request = context.switchToHttp().getRequest();
+		const request = getRequestObject(context);
 		return request.session;
 	});
 

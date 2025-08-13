@@ -5,6 +5,7 @@ import type { Auth } from "better-auth";
 import { APIError, type getSession } from "better-auth/api";
 import { fromNodeHeaders } from "better-auth/node";
 import { AUTH_INSTANCE_KEY } from "./symbols.ts";
+import { getRequestObject } from "./utils.ts";
 
 /**
  * Type representing a valid user session after authentication
@@ -25,7 +26,7 @@ export class AuthGuard implements CanActivate {
 		private readonly reflector: Reflector,
 		@Inject(AUTH_INSTANCE_KEY)
 		private readonly auth: Auth,
-	) {}
+	) { }
 
 	/**
 	 * Validates if the current request is authenticated
@@ -34,7 +35,7 @@ export class AuthGuard implements CanActivate {
 	 * @returns True if the request is authorized to proceed, throws an error otherwise
 	 */
 	async canActivate(context: ExecutionContext): Promise<boolean> {
-		const request = context.switchToHttp().getRequest();
+		const request = getRequestObject(context);
 		const session = await this.auth.api.getSession({
 			headers: fromNodeHeaders(request.headers),
 		});
